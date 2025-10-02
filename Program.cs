@@ -25,6 +25,7 @@ class Slovo
         return count;
     }
 }
+// Головна програма
 
 class Program
 {
