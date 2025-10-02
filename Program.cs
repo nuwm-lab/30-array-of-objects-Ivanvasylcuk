@@ -4,20 +4,17 @@ class Slovo
 {
     public string Text { get; set; }
 
-    // Конструктор
     public Slovo(string text)
     {
         Text = text;
         Console.WriteLine($"Створено об'єкт зі словом: {Text}");
     }
 
-    // Деструктор
     ~Slovo()
     {
         Console.WriteLine($"Знищено об'єкт зі словом: {Text}");
     }
 
-    // Метод підрахунку цифр у слові
     public int CountDigits()
     {
         int count = 0;
@@ -38,7 +35,6 @@ class Program
 
         Slovo[] words = new Slovo[n];
 
-        // Ввід слів
         for (int i = 0; i < n; i++)
         {
             Console.Write($"Введіть слово {i + 1}: ");
@@ -46,7 +42,6 @@ class Program
             words[i] = new Slovo(input);
         }
 
-        // Знаходження слова з найбільшою кількістю цифр
         int maxDigits = -1;
         string wordWithMaxDigits = "";
 
