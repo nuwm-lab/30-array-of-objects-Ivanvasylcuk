@@ -1,24 +1,62 @@
 ﻿using System;
 
-namespace LabWork
+class Slovo
 {
-    // Даний проект є шаблоном для виконання лабораторних робіт
-    // з курсу "Об'єктно-орієнтоване програмування та патерни проектування"
-    // Необхідно змінювати і дописувати код лише в цьому проекті
-    // Відео-інструкції щодо роботи з github можна переглянути 
-    // за посиланням https://www.youtube.com/@ViktorZhukovskyy/videos 
+    public string Text { get; set; }
 
-    class Result
-    { 
-    // TODO: do it !
-    }
-    
-    class Program
+    public Slovo(string text)
     {
-        static void Main(string[] args)
+        Text = text;
+        Console.WriteLine($"Створено об'єкт зі словом: {Text}");
+    }
+
+    ~Slovo()
+    {
+        Console.WriteLine($"Знищено об'єкт зі словом: {Text}");
+    }
+
+    public int CountDigits()
+    {
+        int count = 0;
+        foreach (char c in Text)
         {
-            
-            Console.WriteLine("Hello World!");
+            if (char.IsDigit(c)) count++;
         }
+        return count;
+    }
+}
+// Головна програма
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Введіть кількість слів n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        Slovo[] words = new Slovo[n];
+
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"Введіть слово {i + 1}: ");
+            string input = Console.ReadLine();
+            words[i] = new Slovo(input);
+        }
+
+        int maxDigits = -1;
+        string wordWithMaxDigits = "";
+
+        foreach (var w in words)
+        {
+            int digits = w.CountDigits();
+            Console.WriteLine($"Слово \"{w.Text}\" має {digits} цифр.");
+            if (digits > maxDigits)
+            {
+                maxDigits = digits;
+                wordWithMaxDigits = w.Text;
+            }
+        }
+
+        Console.WriteLine($"\nСлово з найбільшою кількістю цифр: \"{wordWithMaxDigits}\" ({maxDigits} цифр).");
     }
 }
