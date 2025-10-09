@@ -58,5 +58,6 @@ class Program
         }
 
         Console.WriteLine($"\nСлово з найбільшою кількістю цифр: \"{wordWithMaxDigits}\" ({maxDigits} цифр).");
+        Console.WriteLine($"\nПрограма завершила роботу.");
     }
 }
