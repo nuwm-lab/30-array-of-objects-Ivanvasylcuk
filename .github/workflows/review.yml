@@ -2,7 +2,7 @@ name: PR Agent for NUWM
 
 on:
   pull_request:
-    types: [ opened, edited, synchronize, reopened ]
+    types: [ opened, reopened ]
 
 jobs:
   pr_agent_job:
@@ -12,15 +12,13 @@ jobs:
       - name: pr-agent-nuwm
         uses: EzGrade/Pr-Agent-NUWM@main
         env:
-          GIT_APP_ID: ${{ secrets.APP_ID }}
+          APP_ID: ${{ secrets.APP_ID }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GIT_REPOSITORY: ${{ github.repository }}
-          GIT_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
-          GIT_INSTALLATION_ID: ${{ secrets.INSTALLATION_ID }}
+          INSTALLATION_ID: ${{ secrets.INSTALLATION_ID }}
           GOOGLE_CREDENTIALS_CONTENT: ${{ secrets.GOOGLE_CREDENTIALS_CONTENT }}
-          GOOGLE_SHEETS_NAMING: ${{ secrets.GOOGLE_SHEETS_NAMING }}
-          GOOGLE_SPREADSHEET_URL: ${{ secrets.GOOGLE_SPREADSHEET_URL }}
-
-
+          SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
+          SHEETS_NAMING: ${{ secrets.SHEETS_NAMING }}
